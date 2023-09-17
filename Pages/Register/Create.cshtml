@@ -5,7 +5,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Register Traveller Details</h1><br><br>
 
 @*<h4>Traveller</h4>
 <hr />*@
@@ -38,15 +38,16 @@
                 <input asp-for="Traveller.TheBookings" class="form-control" />
                 <span asp-validation-for="Traveller.TheBookings" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label  class="control-label"> Password</label>
-                <input  class="form-control" />
-                
+            <div  class="form-group">
+                <label asp-for="Traveller.Password" class="control-label"></label>
+                <input asp-for="Traveller.Password" class="form-control" />
+                <span asp-validation-for="Traveller.Password" class="text-danger"></span>
             </div>
+            
             <br>
             
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Register" class="btn btn-primary" />
             </div>
         </form>
     </div>

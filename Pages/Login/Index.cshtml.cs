@@ -21,12 +21,35 @@ namespace PSA_AB_YM_JS.Pages.Login
 
         public IList<Traveller> Traveller { get;set; } = default!;
 
+        [BindProperty(SupportsGet = true)]
+
+        public string? emailVal { get; set; }
+        public string? password { get; set; } 
+
         public async Task OnGetAsync()
         {
-            if (_context.Traveller != null)
+            var movies = (IQueryable<Traveller>)_context.Traveller;
+           
+
+            if (!String.IsNullOrEmpty(password) && !String.IsNullOrEmpty(emailVal))
             {
-                Traveller = await _context.Traveller.ToListAsync();
+                movies = movies.Where(s => s.Password.Contains(password));
+                movies = movies.Where(s => s.email.Contains(emailVal));
+            }
+
+            if (movies != null)
+            {
+                Traveller = await movies.ToListAsync();
             }
         }
+
+
+        /* public async Task OnGetAsync()
+         {
+             if (_context.Traveller != null)
+             {
+                 Traveller = await _context.Traveller.ToListAsync();
+             }
+         }*/
     }
 }

@@ -12,6 +12,7 @@ namespace PSA_AB_YM_JS.Model
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DataType(DataType.EmailAddress)]
         public string? email { get; set; }
         public string? postcode { get; set; }
 

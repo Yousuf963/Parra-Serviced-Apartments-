@@ -9,9 +9,9 @@
 
 <form asp-page=“Login”>
     <label for="email">Email:</label><br>
-    <input type="text" id="email" name="email"><br>
+    <input type="text" id="email" name="email" asp-for="emailVal"><br>
     <label for="password">Password:</label><br>
-    <input type="text" id="password" name="password"><br>
+    <input type="text" id="password" name="password" asp-for="password"><br>
     <br>
     <input type="submit" value="Submit">
 </form>

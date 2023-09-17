@@ -5,12 +5,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Register</h1>
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+<h1>Traveller Registered, Please log in</h1>
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-page="/Login/Index">login</a>
+</li>
 
-<form asp-page=“Register”>
+<form asp-page=“Register” hidden="hidden">
     <label for="fname">Given Name:</label><br>
     <input type="text" id="fname" name="fname"><br>
     <label for="lname">Surname</label><br>
@@ -25,7 +25,7 @@
     <input type="submit" value="Submit">
 </form>
 
-<table class=“table”>
+<table hidden="hidden" class=“table”>
     <thead>
         <tr>
             <th>
