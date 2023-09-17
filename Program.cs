@@ -1,7 +1,12 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using PSA_AB_YM_JS.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<PSA_AB_YM_JSContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("PSA_AB_YM_JSContext") ?? throw new InvalidOperationException("Connection string 'PSA_AB_YM_JSContext' not found.")));
 
 var app = builder.Build();
 

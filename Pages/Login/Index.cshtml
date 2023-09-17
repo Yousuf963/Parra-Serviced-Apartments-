@@ -1,0 +1,61 @@
+﻿@page
+@model PSA_AB_YM_JS.Pages.Login.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Login</h1>
+
+<form asp-page=“Login”>
+    <label for="email">Email:</label><br>
+    <input type="text" id="email" name="email" asp-for="emailVal"><br>
+    <label for="password">Password:</label><br>
+    <input type="text" id="password" name="password" asp-for="password"><br>
+    <br>
+    <input type="submit" value="Submit">
+</form>
+
+
+<table hidden="hidden" class=“table” >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Traveller[0].GivenName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Traveller[0].Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Traveller[0].postcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Traveller[0].TheBookings)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Traveller) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GivenName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.postcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TheBookings)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.email">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.email">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.email">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

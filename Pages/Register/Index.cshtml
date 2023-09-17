@@ -1,0 +1,69 @@
+﻿@page
+@model PSA_AB_YM_JS.Pages.Register.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Traveller Registered, Please log in</h1>
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-page="/Login/Index">login</a>
+</li>
+
+<form asp-page=“Register” hidden="hidden">
+    <label for="fname">Given Name:</label><br>
+    <input type="text" id="fname" name="fname"><br>
+    <label for="lname">Surname</label><br>
+    <input type="text" id="lname" name="lname"><br>
+    <label for="email">Email:</label><br>
+    <input type="text" id="email" name="email"><br>
+    <label for="postcode">Postcode:</label><br>
+    <input type="text" id="postcode" name="postcode"><br>
+    <label for="password">Password:</label><br>
+    <input type="text" id="password" name="password"><br>
+    <br>
+    <input type="submit" value="Submit">
+</form>
+
+<table hidden="hidden" class=“table”>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Traveller[0].GivenName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Traveller[0].Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Traveller[0].postcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Traveller[0].TheBookings)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Traveller) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GivenName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.postcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TheBookings)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.email">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.email">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.email">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
